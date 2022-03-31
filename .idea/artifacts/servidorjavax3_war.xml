@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="servidorjavax3:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>servidorjavax3</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="servidorjavax3-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="servidorjavax3:war exploded" />
+    </root>
+  </artifact>
+</component>
