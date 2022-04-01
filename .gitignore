@@ -1,1 +1,4 @@
 .Java
+target/
+vcs.xml
+
