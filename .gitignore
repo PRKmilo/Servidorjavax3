@@ -1,4 +1,5 @@
 .Java
+target/servidorjavax3-1.0-SNAPSHOT.war/
 target/
 vcs.xml
 
