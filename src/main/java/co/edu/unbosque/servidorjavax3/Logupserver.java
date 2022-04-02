@@ -3,6 +3,8 @@ package co.edu.unbosque.servidorjavax3;
 import co.edu.unbosque.servidorjavax3.Dtos.User;
 import co.edu.unbosque.servidorjavax3.services.UserService;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,7 +18,7 @@ public class Logupserver extends HttpServlet {
         response.setContentType("text/html");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
-        String rol=request.getParameter("valor");
+        String rol=request.getParameter("rol");
         boolean exist=false;
         List<User> Users= new UserService().getUsers().get();
         for(int i=0;i<Users.size();i++){
@@ -24,7 +26,12 @@ public class Logupserver extends HttpServlet {
                 exist=true;
             }
         }
-
+        RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        }
 
 
     }
