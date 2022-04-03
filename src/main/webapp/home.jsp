@@ -7,7 +7,9 @@
 <body>
 <h1><%= "Hello!, " + request.getParameter("username") %>
 </h1>
-<h2> <%= "your role is " +  request.getParameter("rol")  %>   </h2>
+<h2> <%= "your role is " +  request.getAttribute("role")  %>   </h2>
+
+<h2> <%= "your Fcoins are " +  request.getAttribute("Fcoins")  %>   </h2>
 
 <br/>
 <a href="./index.html">log</a>
