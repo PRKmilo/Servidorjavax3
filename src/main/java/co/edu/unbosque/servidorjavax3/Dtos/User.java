@@ -12,6 +12,8 @@ public class User {
     @CsvBindByName
     private String role;
 
+    @CsvBindByName
+    private String Fcoins;
 
 
     public String getUsername() {
@@ -38,12 +40,19 @@ public class User {
         this.role = role;
     }
 
+    public String getFcoins() {
+        return Fcoins;
+    }
+
+    public void setFcoins(String fcoins) {
+        Fcoins = fcoins;
+    }
     @Override
     public String toString() {
         return "User{" +
                 "username='" + username + '\'' +
                 ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
+                ", role='" + role + '\'' +",Fcois="+ Fcoins+
                 '}';
     }
 }
