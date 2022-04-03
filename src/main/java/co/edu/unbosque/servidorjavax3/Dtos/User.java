@@ -1,7 +1,13 @@
 package co.edu.unbosque.servidorjavax3.Dtos;
 
 import com.opencsv.bean.CsvBindByName;
-
+import com.opencsv.bean.CsvBindByName;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import com.opencsv.CSVWriter;
 public class User {
     @CsvBindByName
     private String username;
@@ -15,6 +21,16 @@ public class User {
     @CsvBindByName
     private String Fcoins;
 
+    public User(String nombre, String clave, String papel, String moneda){
+        this.username= nombre;
+        this.Fcoins = moneda;
+        this.password = clave;
+        this.role = papel;
+    }
+
+    public User() {
+
+    }
 
     public String getUsername() {
         return username;
@@ -49,10 +65,24 @@ public class User {
     }
     @Override
     public String toString() {
-        return "User{" +
-                "username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +",Fcois="+ Fcoins+
-                '}';
+        return String.format(getUsername(),getRole(),getPassword(),getFcoins());
     }
+    public String[] toarray() {
+        String[] array_string = new String[] {getUsername(),getRole(),getPassword(),getFcoins()};
+        return array_string ;
+    }
+
+    public  static  void main(String[] args) throws IOException {
+        User javier = new User("javier","hola","artista","5");
+        ArrayList<User> usuario = new ArrayList<>();
+        CSVWriter csvWriter = new CSVWriter(new FileWriter("usuarios.csv"));
+        usuario.add(javier);
+
+        for (User ususer : usuario){
+            csvWriter.writeNext(ususer.toarray());
+        }
+
+        csvWriter.close();
+    }
+
 }
