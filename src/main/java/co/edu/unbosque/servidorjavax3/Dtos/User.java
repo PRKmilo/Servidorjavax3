@@ -12,6 +12,8 @@ public class User {
     @CsvBindByName
     private String role;
 
+
+
     public String getUsername() {
         return username;
     }

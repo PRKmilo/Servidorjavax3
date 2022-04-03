@@ -19,13 +19,20 @@ public class Logupserver extends HttpServlet {
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String rol=request.getParameter("rol");
+        System.out.println(username+" este es el username");
+        System.out.println(password+" este es el username");
+        System.out.println(rol+" este es el username");
+
         boolean exist=false;
-        List<User> Users= new UserService().getUsers().get();
-        for(int i=0;i<Users.size();i++){
-            if(Users.get(i).getUsername().equals(username)){
-                exist=true;
-            }
-        }
+        System.out.println("linea 23");
+        User n_usuario=new User();
+        n_usuario.setPassword(password);
+        n_usuario.setUsername(username);
+        n_usuario.setRole(rol);
+        UserService userService=new UserService();
+        userService.WriteCvs(n_usuario);
+        System.out.println("esta linea es la que esta despues de el n_user creacion");
+
         RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");
         try {
             dispatcher.forward(request, response);
