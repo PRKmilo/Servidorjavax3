@@ -34,6 +34,8 @@ public class Loginserver extends HttpServlet {
             out.println("<h1>" + message + "</h1>");
             out.println("</body></html>");*/
             request.setAttribute("role",userfound.getRole());
+            request.setAttribute("Fcoins",userfound.getFcoins());
+            System.out.println("este es el rol "+userfound.getRole());
             RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");
             try {
                 dispatcher.forward(request, response);
