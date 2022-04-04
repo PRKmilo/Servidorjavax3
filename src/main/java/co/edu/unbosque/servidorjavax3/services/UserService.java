@@ -49,21 +49,24 @@ public class UserService {
     }
     public void WriteCvs(User nuevo_usuario) throws IOException {
 
-        File file = new File("../resources/users.csv");
+        File file = new File("./users2.csv");
         List<User> Users= getUsers().get();
+        System.out.println("muestra verdadero si se peude escribi el archivo "+file.canWrite());
         System.out.println("este es el nomre del usuario desde el wrutecvs "+nuevo_usuario.getUsername());
         Users.add(nuevo_usuario);
+        System.out.println("esta liena se crea despues de haber ceado el users4.csv");
         try {
             // create FileWriter object with file as parameter
-            FileWriter outputfile = new FileWriter(file,false);
+            FileWriter outputfile = new FileWriter(file,true);
 
             // create CSVWriter object filewriter object as parameter
             CSVWriter writer = new CSVWriter(outputfile);
 
             // adding header to csv
-            String[] header = { "Name", "Class", "Marks" };
+            String[] header = { "username","password","role","Fcoins" };
+            System.out.println(header[0]+header[1]+header[2] +"estos son los headers");
             writer.writeNext(header);
-            System.out.println("esta es la linea de 65 con el nimbre del nuevo usuario" +nuevo_usuario.getUsername());
+            System.out.println("esta es la linea de 65 con el nombre del nuevo usuario" +nuevo_usuario.getUsername());
             // add data to csv
            for(int i=0;i<Users.size();i++){
                String[] next= {Users.get(i).getUsername(), Users.get(i).getPassword(), Users.get(i).getRole()};
