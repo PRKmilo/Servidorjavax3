@@ -81,4 +81,17 @@ public class UserService {
             e.printStackTrace();
         }
     }
+    public void writecsv2(User nuevo_usuario) throws IOException {
+        ArrayList<User> usuario = new ArrayList<>();
+        CSVWriter csvWriter = new CSVWriter(new FileWriter("users.csv"));
+        usuario.add(nuevo_usuario);
+        System.out.println("esta es la linea despues de añadir el usuario a csv");
+        for (User ususer : usuario){
+            csvWriter.writeNext(ususer.toarray());
+        }
+        System.out.println("en esta linea se supone que se esta escribiendo el csv");
+        csvWriter.close();
+    }
+
 }
+

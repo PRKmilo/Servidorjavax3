@@ -15,17 +15,23 @@ import java.util.List;
 @WebServlet(name = "logup", value = "/logup")
 public class Logupserver extends HttpServlet {
     private UserService userservice;
+    private User user;
     public Logupserver(){
         this.userservice = new UserService();
+        this.user=new User();
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String rol=request.getParameter("rol");
+        String fcoins=request.getParameter("fcoins");
+
         System.out.println(username+" este es el username");
         System.out.println(password+" este es el username");
-        System.out.println(rol+" este es el username");
+        System.out.println(rol+" este es el rol");
+        System.out.println(fcoins+" estos son los fcoins");
+
 
         boolean exist=false;
         System.out.println("linea 23");
@@ -33,7 +39,8 @@ public class Logupserver extends HttpServlet {
         n_usuario.setPassword(password);
         n_usuario.setUsername(username);
         n_usuario.setRole(rol);
-        userservice.WriteCvs(n_usuario);
+
+        user.wrietcsv2(n_usuario);
         System.out.println("esta linea es la que esta despues de el n_user creacion");
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");

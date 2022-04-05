@@ -72,16 +72,17 @@ public class User {
         return array_string ;
     }
 
-    public  static  void main(String[] args) throws IOException {
-        User javier = new User("javier","hola","artista","5");
+    public  void  wrietcsv2(User nuevo_usuario) throws IOException {
+        System.out.println("este es el username,password etc "+nuevo_usuario.getUsername()+nuevo_usuario.getPassword()+nuevo_usuario.getRole()+nuevo_usuario.getFcoins());
+        User javier = new User("usuario",nuevo_usuario.getPassword(),nuevo_usuario.getRole(),nuevo_usuario.getFcoins());
         ArrayList<User> usuario = new ArrayList<>();
-        CSVWriter csvWriter = new CSVWriter(new FileWriter("usuarios.csv"));
+        CSVWriter csvWriter = new CSVWriter(new FileWriter("usuarios6.csv"));
         usuario.add(javier);
 
         for (User ususer : usuario){
             csvWriter.writeNext(ususer.toarray());
         }
-
+        System.out.println("se supone que deberia estar escribiendo en el archivo");
         csvWriter.close();
     }
 
