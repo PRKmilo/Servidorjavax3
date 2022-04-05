@@ -30,16 +30,28 @@ public class Loginserver extends HttpServlet {
                 res=true;
             }
         }
-
+        System.out.println("esta es la linea antes de hacer el res== true");
           if(res == true){
               User userfound =Users.stream()
                       .filter(user -> username.equals(user.getUsername()) && password.equals(user.getPassword()))
                       .findFirst().get();
-              if(username.equals(userfound.getUsername()) && password.equals(userfound.getPassword())){
+              System.out.println("linea despues de userfound");
+              System.out.println("este es el getproperty role de user found "+userfound.getRole() );
+              if(userfound.getRole().equals("Artist")){
                   request.setAttribute("role",userfound.getRole());
                   request.setAttribute("Fcoins",userfound.getFcoins());
                   System.out.println("este es el rol "+userfound.getRole());
-                  RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");
+                  RequestDispatcher dispatcher=request.getRequestDispatcher("./Artista.jsp");
+                  try {
+                      dispatcher.forward(request, response);
+                  } catch (ServletException e) {
+                      e.printStackTrace();
+                  }
+              }else if(userfound.getRole().equals("Costumer")){
+                  request.setAttribute("role",userfound.getRole());
+                  request.setAttribute("Fcoins",userfound.getFcoins());
+                  System.out.println("este es el rol "+userfound.getRole());
+                  RequestDispatcher dispatcher=request.getRequestDispatcher("./comprador.jsp");
                   try {
                       dispatcher.forward(request, response);
                   } catch (ServletException e) {
