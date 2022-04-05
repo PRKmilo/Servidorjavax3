@@ -18,8 +18,8 @@
 
 
     </head>
-    <h2><%= "artista !, " + request.getParameter("username") %> </h2>
-<body>
 
+<body>
+<header style="background: black" ><h1 style="color: #0097A7"><%= "Artist : " + request.getParameter("username") %></h1></header>>
 </body>
 </html>

@@ -18,13 +18,13 @@
 
 
     </head>
-    <h2><%= "comprador!, " + request.getParameter("username") %> </h2>
+
 <body>
-
+<header style="background: black" ><h1 style="color: #0097A7"><%= "Costumer : " + request.getParameter("username") %></h1></header>
 
 <div class="Galeria">
     <div class="foto">
-        <img src="imagenes/bote.jpg" alt="">
+        <img src="img/bote.jpg" alt="">
     </div>
 
 
@@ -35,7 +35,7 @@
 </div>
 <div class="Galeria">
     <div class="foto">
-        <img src="imagenes/demonios.jpg" alt="">
+        <img src="img/demonios.jpg" alt="">
     </div>
 
     <div class="pie">
@@ -46,7 +46,7 @@
 </div>
 <div class="Galeria">
     <div class="foto">
-        <img src="imagenes/puente.jpg" alt="">
+        <img src="img/puente.jpg" alt="">
     </div>
     <div class="pie">
 
@@ -57,7 +57,7 @@
 </div>
 <div class = "Galeria">
     <div class="foto">
-        <img src="imagenes/musica.jpg" alt="">
+        <img src="img/musica.jpg" alt="">
     </div>
     <div class="pie">
 
