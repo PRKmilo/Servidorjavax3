@@ -22,6 +22,7 @@ public class Logupserver extends HttpServlet {
     }
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
+        response.setContentType("text/csv");
         String username=request.getParameter("username");
         String password=request.getParameter("password");
         String rol=request.getParameter("rol");
@@ -39,6 +40,7 @@ public class Logupserver extends HttpServlet {
         n_usuario.setPassword(password);
         n_usuario.setUsername(username);
         n_usuario.setRole(rol);
+        n_usuario.setFcoins(fcoins);
 
         user.wrietcsv2(n_usuario);
         System.out.println("esta linea es la que esta despues de el n_user creacion");
