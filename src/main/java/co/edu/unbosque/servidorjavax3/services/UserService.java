@@ -92,6 +92,12 @@ public class UserService {
         System.out.println("en esta linea se supone que se esta escribiendo el csv");
         csvWriter.close();
     }
+    public void createUser(String username, String password,String role,String Fcoins, String path) throws IOException {
+        String newLine = "\n" + username + "," + password +","+ role+"," +Fcoins;
+        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", true);
+        os.write(newLine.getBytes());
+        os.close();
+    }
 
 }
 

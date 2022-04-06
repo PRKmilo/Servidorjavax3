@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
@@ -42,7 +43,7 @@ public class Logupserver extends HttpServlet {
         n_usuario.setRole(rol);
         n_usuario.setFcoins(fcoins);
 
-        user.wrietcsv2(n_usuario);
+        userservice.createUser(username, password,rol,fcoins, getServletContext().getRealPath("") + File.separator);
         System.out.println("esta linea es la que esta despues de el n_user creacion");
 
         RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");

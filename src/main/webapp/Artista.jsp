@@ -20,6 +20,11 @@
     </head>
 
 <body>
-<header style="background: black" ><h1 style="color: #0097A7"><%= "Artist : " + request.getParameter("username") %></h1></header>>
+<header style="background: black" ><h1 style="color: #0097A7"><%= "Artist : " + request.getParameter("username") %></h1></header>
+<form  action="./uploadFile" method="post" enctype="multipart/form-data">
+    Name: <input type="text" name="name"/>
+    Choose a file: <input type="file" name="multiPartServlet"/>
+    <input type="submit" value="Upload"/>
+</form>
 </body>
 </html>

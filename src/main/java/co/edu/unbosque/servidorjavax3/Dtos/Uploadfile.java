@@ -4,11 +4,12 @@ import java.io.*;
 
 
 import java.io.*;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.annotation.*;
 
-@WebServlet(name = "uploadFile", value = "/upload-file")
+
+@WebServlet(name = "uploadFile", value = "/uploadFile")
 @MultipartConfig(fileSizeThreshold = 1024 * 1024,
         maxFileSize = 1024 * 1024 * 5,
         maxRequestSize = 1024 * 1024 * 5 * 5)
@@ -21,6 +22,7 @@ public class Uploadfile extends HttpServlet {
 
         // Extracting parameters other than uploaded file
         System.out.println("Name: " + request.getParameter("name"));
+        System.out.println("esta es la linea 24 ");
 
         // Getting an instance of the upload path
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
@@ -41,7 +43,7 @@ public class Uploadfile extends HttpServlet {
         }
 
         // Redirecting
-        response.sendRedirect("../webapp/resultado.html");
+        response.sendRedirect("./resultado.html");
     }
 
     public void destroy() {}
