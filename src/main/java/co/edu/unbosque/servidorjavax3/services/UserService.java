@@ -93,9 +93,33 @@ public class UserService {
         csvWriter.close();
     }
     public void createUser(String username, String password,String role,String Fcoins, String path) throws IOException {
-        String newLine = "\n" + username + "," + password +","+ role+"," +Fcoins;
-        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", true);
-        os.write(newLine.getBytes());
+
+        List<User>  lista=getUsers().get();
+        User nuevo_usuario=new User(username,password,role,Fcoins);
+        lista.add(nuevo_usuario);
+        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", false);
+        String res="username,password,role,Fcoins";
+        for(int i=0;i< lista.size();i++){
+            res+="\n"+(lista.get(i).getUsername()+","+lista.get(i).getPassword()+","+lista.get(i).getRole()+","+lista.get(i).getFcoins());
+        }
+        os.write(res.getBytes());
+        os.close();
+    }
+
+    public void mandarfcoins(String username,String password,String Fcoins,String path) throws IOException {
+        List<User>  lista= getUsers().get();
+        boolean res=false;
+        for(int i=0;i< lista.size();i++){
+            if(lista.get(i).getUsername().equals(username) && lista.get(i).getPassword().equals(password)){
+                lista.get(i).setFcoins(Fcoins);
+            }
+        }
+        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", false);
+        String res2="username,password,role,Fcoins";
+        for(int i=0;i< lista.size();i++){
+            res2+="\n"+(lista.get(i).getUsername()+","+lista.get(i).getPassword()+","+lista.get(i).getRole()+","+lista.get(i).getFcoins());
+        }
+        os.write(res2.getBytes());
         os.close();
     }
 
