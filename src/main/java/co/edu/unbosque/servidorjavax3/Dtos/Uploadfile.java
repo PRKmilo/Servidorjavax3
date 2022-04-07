@@ -4,6 +4,7 @@ import java.io.*;
 
 
 import java.io.*;
+import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -24,6 +25,7 @@ public class Uploadfile extends HttpServlet {
         System.out.println("Name: " + request.getParameter("name"));
         System.out.println("esta es la linea 24 ");
 
+
         // Getting an instance of the upload path
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
         File uploadDir = new File(uploadPath);
@@ -35,8 +37,13 @@ public class Uploadfile extends HttpServlet {
             // Getting each part from the request
             for (Part part : request.getParts()) {
                 // Storing the file using the same name
-                String fileName = part.getSubmittedFileName();
+
+                String fileName = crear()+".jpg";
                 part.write(uploadPath + File.separator + fileName);
+                System.out.println("Este es el alfa numerico"+fileName);
+                System.out.println("Este es nombre original"+part.getSubmittedFileName());
+
+
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -47,4 +54,20 @@ public class Uploadfile extends HttpServlet {
     }
 
     public void destroy() {}
+
+    public String crear(){
+
+        int leftLimit = 97; // letter 'a'
+        int rightLimit = 122; // letter 'z'
+        int targetStringLength = 10;
+        Random random = new Random();
+
+        String generatedString = random.ints(leftLimit, rightLimit + 1)
+                .limit(targetStringLength)
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+
+        System.out.println(generatedString);
+        return generatedString;
+    }
 }

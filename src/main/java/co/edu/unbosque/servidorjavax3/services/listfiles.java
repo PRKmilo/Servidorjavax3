@@ -35,13 +35,10 @@ public class listfiles extends HttpServlet {
         List<String> files = new ArrayList<String>();
 
 
-
         for (File file : uploadDir.listFiles()) {
-            
-            String nuevoarchivo=crear();
-            File file2 = new File(nuevoarchivo);
+
             files.add(UPLOAD_DIRECTORY + File.separator + file.getName());
-            System.out.println("esta es la imagen "+file.renameTo(file2));
+            System.out.println("esta es la imagen "+file.getName());
 
 
 
@@ -53,19 +50,4 @@ public class listfiles extends HttpServlet {
         out.println(new Gson().toJson(files));
     }
 
-    public String crear(){
-
-        int leftLimit = 97; // letter 'a'
-        int rightLimit = 122; // letter 'z'
-        int targetStringLength = 10;
-        Random random = new Random();
-
-        String generatedString = random.ints(leftLimit, rightLimit + 1)
-                .limit(targetStringLength)
-                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
-                .toString();
-
-        System.out.println(generatedString);
-        return generatedString;
-    }
 }
