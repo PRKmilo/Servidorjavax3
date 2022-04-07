@@ -22,7 +22,7 @@ public class listfiles extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         // Specifying the content type for the response
         response.setContentType("application/json");
-
+        System.out.println("fiel en doget de la linea 25");
         // Getting an instance of the upload path
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
         File uploadDir = new File(uploadPath);
@@ -31,6 +31,7 @@ public class listfiles extends HttpServlet {
         List<String> files = new ArrayList<String>();
         for (File file : uploadDir.listFiles()) {
             files.add(UPLOAD_DIRECTORY + File.separator + file.getName());
+            System.out.print(file.getName()+" este es el nombre del archivo");
         }
 
         // Adding the data to response, parsing it to json using Gson library
