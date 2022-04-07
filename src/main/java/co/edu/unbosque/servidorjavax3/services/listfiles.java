@@ -26,7 +26,7 @@ public class listfiles extends HttpServlet {
 
         // Specifying the content type for the response
         response.setContentType("application/json");
-
+        System.out.println("fiel en doget de la linea 25");
         // Getting an instance of the upload path
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
         File uploadDir = new File(uploadPath);
@@ -38,10 +38,9 @@ public class listfiles extends HttpServlet {
         for (File file : uploadDir.listFiles()) {
 
             files.add(UPLOAD_DIRECTORY + File.separator + file.getName());
-            System.out.println("esta es la imagen "+file.getName());
 
 
-
+            System.out.println("esta es la imagen "+file.renameTo(file2));
 
         }
 
