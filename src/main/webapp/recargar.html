@@ -8,16 +8,16 @@
 <div class="logiup">
     <img class="f" src="img/artefondo.jpg">
     <h2>  Recargar </h2>
-    <form>
-        <label for="username">Digite el usario </label>
-        <input type="text" placeholder="Enter username">
+    <form action="./Fcoins" methos="post">
+
+        Username: <input type="text" placeholder="Enter username"  name="username" required>
 
 
-        <label for="password">Digite el Password</label>
-        <input type="password" placeholder="Enter password">
+
+        Password: <input type="password" placeholder="Enter password" name="password" required>
 
 
-        <label for="Password"> Confirme el password</label>
+        <label > Confirme el password</label>
         <input type="Password" placeholder="Confirme el password">
 
 
@@ -25,80 +25,15 @@
         <label > Description </label>
         <textarea class="p"></textarea>
 
-        <label for="tarjeta">Digite la tarjeta  </label>
+        <label >Digite la tarjeta  </label>
         <input type="number" placeholder="ENter de trajeta">
 
-        <div class="contenedor">
-            <form action="">
-                <div class="selectbox">
-                    <div class="select" id="select">
-                        <div class="contenido-select">
-                            <h3 class="titulo">Selecciona los Fcoin</h3>
-
-                        </div>
-                    </div>
-
-                    <div class="opciones" id="opciones">
-                        <a href="#" class="opcion">
-                            <div class="contenido-opcion">
-                                <img src="img/bitcoin.png" alt="">
-
-                                <div class="contenido-select">
-                                    <h3 class="titulo">1000 Coins</h3>
-                                    <p class ="Description">Es igual a diezmil pesos</p>
-
-                                </div>
-                            </div>
-
-                        </a>
-
-                        <a href="#" class="opcion">
-                            <div class="contenido-opcion">
-                                <img src="img/bitcoin.png" alt="">
-                                <div class="contenido-select">
-                                    <h3 class="titulo">2000 Coins</h3>
-                                    <p class ="Description">Es igual a vientemil pesos</p>
-
-                                </div>
-                            </div>
-
-                        </a>
-
-                        <a href="#" class="opcion">
-                            <div class="contenido-opcion">
-                                <img src="img/bitcoin.png" alt="">
-                                <div class="contenido-select">
-                                    <h3 class="titulo">10000 Coins</h3>
-                                    <p class ="Description">Es igual a cienmil pesos</p>
-
-                                </div>
-                            </div>
-
-                        </a>
-
-                        <a href="#" class="opcion">
-                            <div class="contenido-opcion">
-                                <img src="img/bitcoin.png" alt="">
-                                <div class="contenido-select">
-                                    <h3 class="titulo">100000 Coins</h3>
-                                    <p class ="Description">Es igual a un millon pesos</p>
-
-                                </div>
-                            </div>
-
-                        </a>
-
-
-
-                    </div>
-                </div>
-
-        </div>
+        Fcoins:<input type="text" placeholder="digite los fcoins" name="fcoins" required >
 
         <input type="submit" value="Recargar">
 
     </form>
 </div>
-<script src="./compradorscript.js"></script>
+
 </body>
 </html>
