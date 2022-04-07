@@ -46,7 +46,7 @@ public class Logupserver extends HttpServlet {
         userservice.createUser(username, password,rol,fcoins, getServletContext().getRealPath("") + File.separator);
         System.out.println("esta linea es la que esta despues de el n_user creacion");
 
-        RequestDispatcher dispatcher=request.getRequestDispatcher("./home.jsp");
+        RequestDispatcher dispatcher=request.getRequestDispatcher("./signedsucesfully.jsp");
         try {
             dispatcher.forward(request, response);
         } catch (ServletException e) {

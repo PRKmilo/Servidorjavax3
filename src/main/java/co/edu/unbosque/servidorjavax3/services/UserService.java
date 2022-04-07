@@ -109,9 +109,10 @@ public class UserService {
     public void mandarfcoins(String username,String password,String Fcoins,String path) throws IOException {
         List<User>  lista= getUsers().get();
         boolean res=false;
+        int nfcoins=Integer.parseInt(Fcoins);
         for(int i=0;i< lista.size();i++){
             if(lista.get(i).getUsername().equals(username) && lista.get(i).getPassword().equals(password)){
-                lista.get(i).setFcoins(Fcoins);
+                lista.get(i).setFcoins((Integer.parseInt(lista.get(i).getFcoins())+nfcoins)+"");
             }
         }
         FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", false);
