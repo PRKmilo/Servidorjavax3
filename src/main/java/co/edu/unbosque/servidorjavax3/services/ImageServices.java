@@ -6,13 +6,16 @@ import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Optional;
 
 public class ImageServices {
-    public Optional<List<Pieza>> getPiezas() throws IOException {
+    public Optional<List<Pieza>> getUsers() throws IOException {
 
         List<Pieza> piezas;
 
@@ -43,22 +46,5 @@ public class ImageServices {
         }
 
         return Optional.of(piezas);
-    }
-
-    public void createpiece(String titulo,String precio,String user,String img,String path)throws IOException{
-        List<Pieza> listap=getPiezas().get();
-        Pieza nueva_pieza=new Pieza();
-        nueva_pieza.setTitulo(titulo);
-        nueva_pieza.setUser(user);
-        nueva_pieza.setPrecio(precio);
-        nueva_pieza.setImg(img);
-        listap.add(nueva_pieza);
-        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "pieza.csv", false);
-        String res2="titulo,precio,user,img";
-        for(int i=0;i< listap.size();i++){
-            res2+="\n"+(listap.get(i).getTitulo()+","+listap.get(i).getUser()+","+listap.get(i).getPrecio()+","+listap.get(i).getImg());
-        }
-        os.write(res2.getBytes());
-        os.close();
     }
 }
