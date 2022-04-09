@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -40,7 +41,7 @@ public class listfiles extends HttpServlet {
             files.add(UPLOAD_DIRECTORY + File.separator + file.getName());
 
 
-            System.out.println("esta es la imagen "+file.renameTo(file2));
+
 
         }
 
@@ -48,5 +49,7 @@ public class listfiles extends HttpServlet {
         PrintWriter out = response.getWriter();
         out.println(new Gson().toJson(files));
     }
+
+
 
 }

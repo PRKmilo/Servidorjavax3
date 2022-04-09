@@ -21,16 +21,8 @@ public class User {
     @CsvBindByName
     private String Fcoins;
 
-    public User(String nombre, String clave, String papel, String moneda){
-        this.username= nombre;
-        this.Fcoins = moneda;
-        this.password = clave;
-        this.role = papel;
-    }
 
-    public User() {
-
-    }
+    
 
     public String getUsername() {
         return username;
@@ -72,37 +64,9 @@ public class User {
         return array_string ;
     }
 
-    public  void  wrietcsv2(User nuevo_usuario) throws IOException {
 
-        System.out.println("este es el username,password etc "+nuevo_usuario.getUsername()+nuevo_usuario.getPassword()+nuevo_usuario.getRole()+nuevo_usuario.getFcoins());
-        User javier = new User(nuevo_usuario.getUsername(), nuevo_usuario.getPassword(),nuevo_usuario.getRole(),nuevo_usuario.getFcoins());
-        ArrayList<User> usuario = new ArrayList<>();
-        User javier2=new User ("o","q","r","3");
-        CSVWriter csvWriter = new CSVWriter(new FileWriter("./usuarios.csv"));
-        usuario.add(javier);
-        usuario.add(javier2);
 
-        for (User ususer : usuario){
-            csvWriter.writeNext(ususer.toarray());
-        }
-        System.out.println("se supone que deberia estar escribiendo en el archivo");
-        csvWriter.close();
-    }
 
-    public static  void main(String args[]) throws IOException {
-
-        ArrayList<User> usuario = new ArrayList<>();
-        User javier2=new User ("o","q","r","3");
-        CSVWriter csvWriter = new CSVWriter(new FileWriter("./usuarios6.csv"));
-       ;
-        usuario.add(javier2);
-
-        for (User ususer : usuario){
-            csvWriter.writeNext(ususer.toarray());
-        }
-        System.out.println("se supone que deberia estar escribiendo en el archivo");
-        csvWriter.close();
-    }
     }
 
 
