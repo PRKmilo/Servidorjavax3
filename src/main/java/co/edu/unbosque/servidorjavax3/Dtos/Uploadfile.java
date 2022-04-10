@@ -5,7 +5,6 @@ import co.edu.unbosque.servidorjavax3.services.ImageServices;
 import java.io.*;
 
 
-import java.io.*;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -55,7 +54,7 @@ public class Uploadfile extends HttpServlet {
 
 
             }
-            imageServices.create_peace("titulo","34","artista","ralk",getServletContext().getRealPath("") + File.separator);
+            imageServices.create_peace(request.getParameter("titulo"),request.getParameter("fcoins"),request.getParameter("artist"),fileName,getServletContext().getRealPath("") + File.separator);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

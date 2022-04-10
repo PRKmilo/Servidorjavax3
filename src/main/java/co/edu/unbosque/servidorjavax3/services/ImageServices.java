@@ -2,6 +2,7 @@ package co.edu.unbosque.servidorjavax3.services;
 
 import co.edu.unbosque.servidorjavax3.Dtos.Pieza;
 import co.edu.unbosque.servidorjavax3.Dtos.User;
+import co.edu.unbosque.servidorjavax3.services.UserService;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import com.opencsv.bean.HeaderColumnNameMappingStrategy;
@@ -17,7 +18,7 @@ public class ImageServices {
         List<Pieza> piezas;
 
         try (InputStream is = UserService.class.getClassLoader()
-                .getResourceAsStream("/pieza.csv")) {
+                .getResourceAsStream("/pieces.csv")) {
 
             if (is == null) {
                 return Optional.empty();
@@ -52,7 +53,7 @@ public class ImageServices {
         nueva_pieza.setImg(img);
         nueva_pieza.setTitulo(titulo);
         listp.add(nueva_pieza);
-        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "pieces.csv", true);
+        FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "pieces.csv", false);
         String res="img,titulo,precio,artist";
         for(int i=0;i< listp.size();i++){
             res+="\n"+listp.get(i).getImg()+","+listp.get(i).getTitulo()+","+listp.get(i).getPrecio()+","+listp.get(i).getArtist();

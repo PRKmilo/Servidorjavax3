@@ -20,8 +20,11 @@
                 let imgElem = document.createElement("img");
                 imgElem.src = "./" + image;
                 imgElem.width = 200;
+                let titele= document.createElement("h1");
+                titele.innerText="titulo imagen";
 
                 // Attaching element to DIV
+                imagesDiv.appendChild(titele);
                 imagesDiv.appendChild(imgElem);
             });
         });
