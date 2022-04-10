@@ -39,7 +39,7 @@ public class Loginserver extends HttpServlet {
               System.out.println("este es el getproperty role de user found "+userfound.getRole() );
               if(userfound.getRole().equals("Artist")){
                   request.setAttribute("role",userfound.getRole());
-                  request.setAttribute("Fcoins",userfound.getFcoins());
+                  request.setAttribute("fcoins",userfound.getFcoins());
                   System.out.println("este es el rol "+userfound.getRole());
                   RequestDispatcher dispatcher=request.getRequestDispatcher("./Artista.jsp");
                   try {
@@ -49,7 +49,7 @@ public class Loginserver extends HttpServlet {
                   }
               }else if(userfound.getRole().equals("Costumer")){
                   request.setAttribute("role",userfound.getRole());
-                  request.setAttribute("Fcoins",userfound.getFcoins());
+                  request.setAttribute("fcoins",userfound.getFcoins());
                   System.out.println("este es el rol "+userfound.getRole());
                   RequestDispatcher dispatcher=request.getRequestDispatcher("./comprador.jsp");
                   try {

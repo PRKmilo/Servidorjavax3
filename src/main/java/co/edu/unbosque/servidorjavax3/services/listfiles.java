@@ -1,6 +1,7 @@
 package co.edu.unbosque.servidorjavax3.services;
 
 
+import co.edu.unbosque.servidorjavax3.Dtos.Pieza;
 import com.google.gson.Gson;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -19,6 +21,10 @@ import java.util.Random;
 @WebServlet(name = "listFiles", value = "/list-files")
 public class listfiles extends HttpServlet {
     private String UPLOAD_DIRECTORY = "uploads";
+    private ImageServices imageServices;
+    public listfiles(){
+        this.imageServices=new ImageServices();
+    }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 
@@ -33,20 +39,20 @@ public class listfiles extends HttpServlet {
 
         // Listing file names in path
         List<String> files = new ArrayList<String>();
+        List<Pieza> piezas=imageServices.getPieces().get();
 
 
-        for (File file : uploadDir.listFiles()) {
 
-            files.add(UPLOAD_DIRECTORY + File.separator + file.getName());
-
-
-            System.out.println("esta es la imagen "+file.renameTo(file2));
-
+        for(int i=0;i< uploadDir.listFiles().length;i++){
+            files.add(UPLOAD_DIRECTORY + File.separator + uploadDir.listFiles()[i].getName()+"&&"+piezas.get(i).getArtist()+"&&"+
+                    piezas.get(i).getPrecio()+"&&"+piezas.get(i).getTitulo());
         }
 
         // Adding the data to response, parsing it to json using Gson library
         PrintWriter out = response.getWriter();
         out.println(new Gson().toJson(files));
     }
+
+
 
 }

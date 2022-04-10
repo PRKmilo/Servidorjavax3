@@ -95,7 +95,11 @@ public class UserService {
     public void createUser(String username, String password,String role,String Fcoins, String path) throws IOException {
 
         List<User>  lista=getUsers().get();
-        User nuevo_usuario=new User(username,password,role,Fcoins);
+        User nuevo_usuario=new User();
+        nuevo_usuario.setFcoins(Fcoins);
+        nuevo_usuario.setUsername(username);
+        nuevo_usuario.setPassword(password);
+        nuevo_usuario.setRole(role);
         lista.add(nuevo_usuario);
         FileOutputStream os = new FileOutputStream(path + "WEB-INF/classes/" + "users.csv", false);
         String res="username,password,role,Fcoins";

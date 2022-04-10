@@ -1,9 +1,10 @@
 package co.edu.unbosque.servidorjavax3.Dtos;
 
+import co.edu.unbosque.servidorjavax3.services.ImageServices;
+
 import java.io.*;
 
 
-import java.io.*;
 import java.util.Random;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
@@ -15,7 +16,10 @@ import javax.servlet.annotation.*;
         maxRequestSize = 1024 * 1024 * 5 * 5)
 public class Uploadfile extends HttpServlet {
     private String UPLOAD_DIRECTORY = "uploads";
-
+    private ImageServices imageServices;
+    public Uploadfile(){
+        this.imageServices=new ImageServices();
+    }
     public void init() {}
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -28,6 +32,10 @@ public class Uploadfile extends HttpServlet {
         String uploadPath = getServletContext().getRealPath("") + File.separator + UPLOAD_DIRECTORY;
 
         System.out.println(uploadPath+ " esta es la ruta ");
+        System.out.println("esta es el nombre "+request.getParameter("titulo"));
+        System.out.println("esta es el precio "+request.getParameter("fcoins"));
+        System.out.println("esta es el user "+request.getParameter("artist"));
+
         File uploadDir = new File(uploadPath);
 
         // If path doesn`t exist, create it
@@ -35,16 +43,18 @@ public class Uploadfile extends HttpServlet {
 
         try {
             // Getting each part from the request
+            String fileName = crear()+".jpg";
+            System.out.println("este es el servelet context "+getServletContext().getRealPath("")+File.separator);
+            String path=getServletContext().getRealPath("")+File.separator;
             for (Part part : request.getParts()) {
                 // Storing the file using the same name
-
-                String fileName = crear()+".jpg";
                 part.write(uploadPath + File.separator + fileName);
                 System.out.println("Este es el alfa numerico"+fileName);
                 System.out.println("Este es nombre original"+part.getSubmittedFileName());
 
 
             }
+            imageServices.create_peace(request.getParameter("titulo"),request.getParameter("fcoins"),request.getParameter("artist"),fileName,getServletContext().getRealPath("") + File.separator);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

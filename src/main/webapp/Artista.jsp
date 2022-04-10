@@ -16,17 +16,24 @@
 
         <!--incluir CSS-->
 
+        <link rel="stylesheet" href="./Artista.css">
 
     </head>
 
-<body>
+<body style="background: #1B2678">
 <header style="background: black" ><h1 style="color: #0097A7"><%= "Artist : " + request.getParameter("username") %></h1></header>
-<form  action="./uploadFile" method="post" enctype="multipart/form-data">
 
-    fcoins: <input type="text" name="fcoins"/>
-    Name: <input type="text" name="name"/>
+<h1>Generate new art piece</h1>
+<form  action="./uploadFile" method="post" enctype="multipart/form-data" style="background: #6ACA1B">
+
+    Precio: <input type="text"  name="fcoins"/>
+    Put your username again please: <input type="text" name="artist">
+    titulo: <input type="text" name="titulo">
+
     Choose a file: <input type="file" name="multiPartServlet"/>
     <input type="submit" value="Upload"/>
 </form>
+
+<a href="./recargar.html" style="background: #65FF33" style="color: #FFFFFF" > Loaded your count</a>
 </body>
 </html>
